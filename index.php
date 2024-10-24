@@ -1,3 +1,36 @@
+<?php
+define('PATH_LOG', 'log/path.log'); 
+include 'inc/log.inc.php';
+?>
+<?php
+if (isset($_GET['id']) && $_GET['id'] === 'log') {
+    include 'inc/view-log.inc.php';
+    exit;
+}
+?>
+<?php
+include 'inc/cookie.inc.php';
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+</head>
+<body>
+  <h1>
+    <?php
+    if ($visitCounter == 2) {
+      echo "Спасибо, что зашли на огонек!";
+    } else {
+      echo "Вы зашли к нам $visitCounter раз.<br>";
+      echo "Последнее посещение: $lastVisit";
+    }
+    ?>
+    </h1>
+  </body>
+</html>
+
 <?php 
   include 'inc/headers.inc.php'; 
 ?>
@@ -45,6 +78,8 @@
       </li>
       <li><a href='index.php?id=gbook'>Гостевая книга</a>
       </li>
+      <li><a href='index.php?id=log'>Журнал посещений</a>
+    </li>
     </ul>
     <!-- Навигация -->
   </div>
